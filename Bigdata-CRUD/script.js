@@ -42,7 +42,7 @@ function validateForm() {
     // Validate mobile number
     var mobile = document.getElementById("mobile").value;
     if (!mobile.match(mobilePattern)) {
-        alert("Mobile number must contain 10 digits.");
+        alert("Invalid Mobile number.");
         isValid = false;
     }
 
@@ -58,6 +58,14 @@ function readFormData() {
     formData["email"] = document.getElementById("email").value;
     formData["course"] = document.getElementById("course").value;
     formData["mobile"] = document.getElementById("mobile").value;
+     // Retrieve selected gender
+     var genderOptions = document.getElementsByName("gender");
+     for (var i = 0; i < genderOptions.length; i++) {
+         if (genderOptions[i].checked) {
+             formData["gender"] = genderOptions[i].value;
+             break;
+         }
+     }
     return formData;
 }
 
@@ -75,6 +83,10 @@ function insertNewRecord(data) {
 		cell4.innerHTML = data.mobile;
     cell4 = newRow.insertCell(4);
         cell4.innerHTML = `<button onClick="onEdit(this)">Edit</button> <button onClick="onDelete(this)">Delete</button>`;
+        cell5 = newRow.insertCell(4);  // New cell for gender
+    cell5.innerHTML = data.gender; // Display gender value here
+
+    
 }
 
 //Edit the data

@@ -1,8 +1,8 @@
-# Student Management System
+# Student Registration System
 
 ## Description
 
-The **Student Management System** is a web application designed to manage student data. It allows users to register students, view a list of registered students, and store their information securely in a MongoDB database. The application features a clean and intuitive user interface to simplify the student registration process and display a dynamic list of students.
+The **Student Registration System** is a web application designed to manage student data. It allows users to register students, view a list of registered students, and store their information securely in a MongoDB database. The application features a clean and intuitive user interface to simplify the student registration process and display a dynamic list of students.
 
 ## Features
 

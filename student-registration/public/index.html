@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Wrapper for the form and table -->
+    <div class="wrapper">
+        <!-- Registration Form -->
+        <div class="container">
+            <h2>Student Registration Form</h2>
+            <form onsubmit="onFormSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="course">Course</label>
+                    <input type="text" id="course" required>
+                </div>
+                <div class="form-group">
+                    <label for="mobile">Mobile</label>
+                    <input type="text" id="mobile" required>
+                </div>
+                <div class="form-group">
+                    <label>Gender</label>
+                    <div class="gender-group">
+                        <input type="radio" name="gender" value="Male" required> Male
+                        <input type="radio" name="gender" value="Female" required> Female
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn submit-btn">Submit</button>
+                    <button type="button" onclick="resetForm()" class="btn reset-btn">Reset</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Student List Table -->
+        <div class="student-list">
+            <h2>Student List</h2>
+            <table id="storeList" class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Course</th>
+                        <th>Mobile</th>
+                        <th>Gender</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<script>
+    // Function to handle form submission
+    function onFormSubmit(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Get form data
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const course = document.getElementById('course').value;
+        const mobile = document.getElementById('mobile').value;
+        const gender = document.querySelector('input[name="gender"]:checked').value;
+
+        // Prepare the data to send to the server
+        const formData = {
+            name: name,
+            email: email,
+            course: course,
+            mobile: mobile,
+            gender: gender
+        };
+
+        // Send the data to the backend using Fetch API
+        fetch('http://localhost:5001/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData) // Send form data as JSON
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert(data); // Show success message
+            document.getElementById('studentForm').reset(); // Reset the form
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error in submitting the form');
+        });
+    }

@@ -1,0 +1,181 @@
+/* General reset and styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f6f8;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background image with blur */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('students.jpg') center center/cover no-repeat;
+    filter: blur(8px);
+    z-index: -1; /* Ensure it's behind the content */
+}
+
+/* Wrapper to align form and table side by side */
+.wrapper {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Form container */
+.container {
+    width: 50%; /* Adjust form width */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Student list container */
+.student-list {
+    width: 46%; /* Smaller width for the student list */
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Headings styling inside container and student-list */
+.container h2,
+.student-list h2 {
+    background-color: #d1e7ff; /* Light blue background */
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form input and labels styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.gender-group {
+    display: flex;
+    gap: 10px;
+}
+
+/* Button styling */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn {
+    background-color: #28a745;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
+
+.reset-btn {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.reset-btn:hover {
+    background-color: #c82333;
+}
+
+/* Table styling */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.styled-table thead tr {
+    background-color: #007bff;
+    color: #fff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #007bff;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.styled-table tbody tr td button {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+}
+
+.styled-table tbody tr td button:first-child {
+    background-color: #ffc107;
+    margin-right: 5px;
+}
+
+.styled-table tbody tr td button:first-child:hover {
+    background-color: #e0a800;
+}
+
+.styled-table tbody tr td button:last-child {
+    background-color: #dc3545;
+}
+
+.styled-table tbody tr td button:last-child:hover {
+    background-color: #c82333;
+}
